@@ -92,3 +92,13 @@ input, textarea, select {
     font-size: 1rem;
   }
 }
+
+.page-layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-layout-wrapper > main {
+  flex: 1;
+}

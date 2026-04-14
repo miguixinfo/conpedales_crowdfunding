@@ -5,9 +5,9 @@ import './DonarCancelar.css';
 
 export default function DonarCancelar() {
   return (
-    <>
+    <div className="page-layout-wrapper">
       <Navbar />
-      <div className="donar-cancelar-page">
+      <main className="donar-cancelar-page">
         <div className="cancelar-container">
           <div className="cancelar-icon">
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -31,8 +31,8 @@ export default function DonarCancelar() {
             </Button>
           </div>
         </div>
-      </div>
+      </main>
       <Footer />
-    </>
+    </div>
   );
 }

@@ -13,9 +13,9 @@ export default function DonarExito() {
   const sessionId = searchParams.get('session_id');
 
   return (
-    <>
+    <div className="page-layout-wrapper">
       <Navbar />
-      <div className="donar-exito-page">
+      <main className="donar-exito-page">
         <div className="exito-container">
           <div className="exito-icon">
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -48,8 +48,8 @@ export default function DonarExito() {
             </Button>
           </div>
         </div>
-      </div>
+      </main>
       <Footer />
-    </>
+    </div>
   );
 }
