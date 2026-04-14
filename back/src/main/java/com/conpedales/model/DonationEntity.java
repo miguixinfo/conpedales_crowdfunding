@@ -41,8 +41,8 @@ public class DonationEntity {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @OneToOne(mappedBy = "donation", cascade = CascadeType.ALL, orphanRemoval = true)
-    private CommentEntity comment;
+    @Column(columnDefinition = "TEXT")
+    private String comment;
 
     @PrePersist
     protected void onCreate() {

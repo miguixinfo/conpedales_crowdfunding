@@ -27,4 +27,10 @@ public class DonationController {
     public ResponseEntity<CheckoutResponse> createCheckout(@Valid @RequestBody CreateCheckoutDTO dto) {
         return ResponseEntity.ok(donationService.createCheckoutSession(dto));
     }
+
+    @PostMapping("/confirm")
+    public ResponseEntity<Void> confirmDonation(@RequestParam String sessionId) {
+        donationService.processSuccessfulPayment(sessionId, null);
+        return ResponseEntity.ok().build();
+    }
 }

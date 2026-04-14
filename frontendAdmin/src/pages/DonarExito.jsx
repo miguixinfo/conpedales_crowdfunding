@@ -1,16 +1,31 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import Button from '../components/common/Button';
 import { useKmProgress } from '../hooks/useStats';
+import { publicApi } from '../services/api';
 import './DonarExito.css';
 
 export default function DonarExito() {
   const [searchParams] = useSearchParams();
   const { kmFinanced } = useKmProgress();
+  const confirmedRef = useRef(false);
   
   const sessionId = searchParams.get('session_id');
+
+  useEffect(() => {
+    if (sessionId && !confirmedRef.current) {
+      confirmedRef.current = true;
+      publicApi.confirmDonation(sessionId)
+        .then(() => {
+          console.log('Donación confirmada con éxito');
+        })
+        .catch(err => {
+          console.error('Error al confirmar la donación:', err);
+        });
+    }
+  }, [sessionId]);
 
   return (
     <div className="page-layout-wrapper">

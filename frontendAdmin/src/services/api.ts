@@ -24,41 +24,44 @@ const api = axios.create({
 // ============================================
 export const publicApi = {
   // Stages
-  getStages: () => 
+  getStages: () =>
     api.get<Stage[]>('/stages').then(res => res.data),
-  
-  getStageById: (id: number) => 
+
+  getStageById: (id: number) =>
     api.get<Stage>(`/stages/${id}`).then(res => res.data),
-  
-  getLatestStage: () => 
+
+  getLatestStage: () =>
     api.get<Stage>('/stages/latest').then(res => res.data),
 
   // Stats
-  getStats: () => 
+  getStats: () =>
     api.get<Stats>('/stats').then(res => res.data),
 
   // Donations
-  getDonationFeed: () => 
+  getDonationFeed: () =>
     api.get<DonationFeedItem[]>('/donations/feed').then(res => res.data),
-  
-  createCheckout: (data: CreateCheckoutDTO) => 
+
+  createCheckout: (data: CreateCheckoutDTO) =>
     api.post<CheckoutResponse>('/donations/checkout', data).then(res => res.data),
 
+  confirmDonation: (sessionId: string) =>
+    api.post(`/donations/confirm?sessionId=${sessionId}`).then(res => res.data),
+
   // Map
-  getMapData: () => 
+  getMapData: () =>
     api.get<MapData>('/map').then(res => res.data),
 
   // Photos
-  getPhotos: () => 
+  getPhotos: () =>
     api.get<Photo[]>('/photos').then(res => res.data),
-  
-  getPhotosByStage: (stageId: number) => 
+
+  getPhotosByStage: (stageId: number) =>
     api.get<Photo[]>(`/photos/stage/${stageId}`).then(res => res.data),
-  
-  getHighlightPhotos: () => 
+
+  getHighlightPhotos: () =>
     api.get<Photo[]>('/photos/highlight').then(res => res.data),
 
-  getPreviousTrips: () => 
+  getPreviousTrips: () =>
     api.get<PreviousTrip[]>('/previous-trips').then(res => res.data),
 };
 

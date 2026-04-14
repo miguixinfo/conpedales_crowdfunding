@@ -40,6 +40,7 @@ public class StripeService {
                 .amount(dto.getAmount())
                 .donorName(dto.getName())
                 .donorEmail(dto.getEmail())
+                .comment(dto.getComment())
                 .status(DonationEntity.DonationStatus.PENDING)
                 .stripeSessionId(UUID.randomUUID().toString())
                 .build();
@@ -90,7 +91,7 @@ public class StripeService {
         Long donationId = Long.parseLong(clientReferenceId);
         return donationRepository.findById(donationId)
                 .map(donation -> {
-                    donation.setStripePaymentIntent(paymentIntentId);
+                    donation.setStripePaymentIntent(paymentIntentId != null ? paymentIntentId : session.getPaymentIntent());
                     donation.setStatus(DonationEntity.DonationStatus.COMPLETED);
                     return donationRepository.save(donation);
                 })

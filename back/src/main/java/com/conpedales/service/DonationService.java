@@ -3,9 +3,7 @@ package com.conpedales.service;
 import com.conpedales.dto.*;
 import com.conpedales.exception.ResourceNotFoundException;
 import com.conpedales.exception.StripeCheckoutException;
-import com.conpedales.model.CommentEntity;
 import com.conpedales.model.DonationEntity;
-import com.conpedales.repository.CommentRepository;
 import com.conpedales.repository.DonationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,18 +17,17 @@ import java.util.stream.Collectors;
 public class DonationService {
 
     private final DonationRepository donationRepository;
-    private final CommentRepository commentRepository;
     private final StripeService stripeService;
 
     @Transactional(readOnly = true)
     public List<DonationFeedDTO> getDonationFeed() {
-        return commentRepository.findAllByDonationStatusCompleted()
+        return donationRepository.findAllByStatusOrderByCreatedAtDesc(DonationEntity.DonationStatus.COMPLETED)
                 .stream()
-                .map(comment -> DonationFeedDTO.builder()
-                        .name(comment.getDonation().getDonorName())
-                        .amount(comment.getDonation().getAmount())
-                        .comment(comment.getMessage())
-                        .date(comment.getDonation().getCreatedAt())
+                .map(donation -> DonationFeedDTO.builder()
+                        .name(donation.getDonorName())
+                        .amount(donation.getAmount())
+                        .comment(donation.getComment())
+                        .date(donation.getCreatedAt())
                         .build())
                 .collect(Collectors.toList());
     }
@@ -49,19 +46,7 @@ public class DonationService {
         return stripeService.processSuccessfulPayment(sessionId, paymentIntentId);
     }
 
-    @Transactional
-    public void saveComment(Long donationId, String message) {
-        DonationEntity donation = donationRepository.findById(donationId)
-                .orElseThrow(() -> new ResourceNotFoundException("Donación no encontrada: " + donationId));
 
-        CommentEntity comment = commentRepository.findByDonationId(donationId)
-                .orElse(CommentEntity.builder()
-                        .donation(donation)
-                        .build());
-
-        comment.setMessage(message);
-        commentRepository.save(comment);
-    }
 
     @Transactional(readOnly = true)
     public DonationDTO getDonationById(Long id) {
