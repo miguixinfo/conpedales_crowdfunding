@@ -1,0 +1,474 @@
+Perfecto, aquí vamos a pensar **como producto + backend**, no solo como código. La idea es sacar **todas las funcionalidades en forma de Historias de Usuario (HU)** agrupadas por **épicas**, para que luego podáis planificar sprints fácilmente. 🚴‍♂️🌍
+
+Las separo en **Usuario (público)**, **Admin** y **Sistema**.
+
+---
+
+# 🚴 ÉPICA 1 — Visualización del viaje
+
+Objetivo: que cualquier visitante pueda **entender el viaje Toledo → Atenas y seguir el progreso**.
+
+## HU-1 Ver estadísticas globales
+
+**Como visitante**
+quiero ver estadísticas globales del viaje
+para entender el progreso total.
+
+**Datos mostrados**
+
+* km recorridos
+* km financiados
+* desnivel acumulado
+* número de etapas
+* total donado
+* número de donantes
+
+Endpoint:
+
+```
+GET /stats
+```
+
+---
+
+## HU-2 Ver todas las etapas
+
+**Como visitante**
+quiero ver la lista de etapas del viaje
+para conocer el recorrido completo.
+
+Datos:
+
+* número de etapa
+* país
+* origen
+* destino
+* km
+* desnivel
+
+Endpoint
+
+```
+GET /stages
+```
+
+---
+
+## HU-3 Ver detalle de una etapa
+
+**Como visitante**
+quiero ver toda la información de una etapa
+para conocer cómo fue ese día.
+
+Datos:
+
+* origen
+* destino
+* km
+* desnivel
+* tiempo
+* descripción
+* fotos
+* rutitas
+
+Endpoint
+
+```
+GET /stages/{id}
+```
+
+---
+
+## HU-4 Ver rutitas de una etapa
+
+**Como visitante**
+quiero ver los segmentos de una etapa
+para entender qué ocurrió durante el día.
+
+Datos:
+
+* inicio
+* final
+* km
+* desnivel
+* eventos
+
+Endpoint
+
+```
+GET /segments/stage/{id}
+```
+
+---
+
+## HU-5 Ver fotos del viaje
+
+**Como visitante**
+quiero ver fotos asociadas a etapas o rutitas
+para visualizar la experiencia del viaje.
+
+---
+
+## HU-6 Ver última etapa publicada
+
+**Como visitante**
+quiero ver rápidamente la última etapa publicada
+para saber el progreso más reciente.
+
+Endpoint
+
+```
+GET /stages/latest
+```
+
+---
+
+# 🗺️ ÉPICA 2 — Mapa interactivo del viaje
+
+Objetivo: mostrar el viaje de forma **visual y épica**.
+
+## HU-7 Ver el mapa del recorrido
+
+**Como visitante**
+quiero ver un mapa con todas las etapas
+para visualizar el recorrido completo.
+
+Endpoint
+
+```
+GET /map
+```
+
+Incluye:
+
+* coordenadas inicio etapa
+* coordenadas fin etapa
+
+---
+
+## HU-8 Ver eventos en el mapa
+
+**Como visitante**
+quiero ver eventos del viaje en el mapa
+para conocer incidencias o momentos especiales.
+
+Eventos:
+
+* pinchazo
+* mecánico
+* interacción social
+* comida
+* paisaje
+
+---
+
+## HU-9 Ver fotos en el mapa
+
+**Como visitante**
+quiero ver fotos ubicadas en el mapa
+para ver dónde fueron tomadas.
+
+---
+
+# 💰 ÉPICA 3 — Crowdfunding del viaje
+
+Objetivo: permitir que la comunidad financie el viaje.
+
+Pagos mediante **Stripe**.
+
+---
+
+## HU-10 Realizar una donación
+
+**Como visitante**
+quiero donar dinero al proyecto
+para ayudar a financiar el viaje.
+
+Condiciones:
+
+* mínimo 1€
+* nombre opcional
+
+Endpoint
+
+```
+POST /donations/checkout
+```
+
+---
+
+## HU-11 Asociar comentario a una donación
+
+**Como donante**
+quiero escribir un comentario tras donar
+para enviar un mensaje a los viajeros.
+
+---
+
+## HU-12 Ver feed de donaciones
+
+**Como visitante**
+quiero ver un feed de donaciones
+para conocer el apoyo de la comunidad.
+
+Datos:
+
+* nombre
+* cantidad
+* comentario
+* fecha
+
+Endpoint
+
+```
+GET /donations/feed
+```
+
+---
+
+## HU-13 Ver total financiado
+
+**Como visitante**
+quiero ver cuánto dinero se ha recaudado
+para saber cuánto del viaje está financiado.
+
+Relación:
+
+```
+1€ = 1km
+```
+
+---
+
+# 📸 ÉPICA 4 — Gestión de contenido del viaje (ADMIN)
+
+Interfaz admin hecha con **React Native**.
+
+---
+
+## HU-14 Crear etapa
+
+**Como administrador**
+quiero crear una nueva etapa
+para registrar un día del viaje.
+
+Campos:
+
+* país
+* origen
+* destino
+* coordenadas
+* km
+* desnivel
+* tiempo
+* descripción
+
+Endpoint
+
+```
+POST /admin/stages
+```
+
+---
+
+## HU-15 Editar etapa
+
+**Como administrador**
+quiero editar una etapa
+para corregir información.
+
+---
+
+## HU-16 Eliminar etapa
+
+**Como administrador**
+quiero eliminar una etapa
+para corregir errores.
+
+---
+
+## HU-17 Crear rutita
+
+**Como administrador**
+quiero registrar un segmento de una etapa
+para documentar eventos del recorrido.
+
+Endpoint
+
+```
+POST /admin/segments
+```
+
+---
+
+## HU-18 Añadir eventos a una rutita
+
+**Como administrador**
+quiero añadir eventos a un segmento
+para indicar incidencias o momentos destacados.
+
+---
+
+# 📸 ÉPICA 5 — Gestión de fotos
+
+Las imágenes se almacenan en **Cloudflare R2**.
+
+---
+
+## HU-19 Subir foto
+
+**Como administrador**
+quiero subir fotos del viaje
+para ilustrar las etapas.
+
+Flujo:
+
+```
+1 solicitar upload url
+2 subir a R2
+3 registrar foto
+```
+
+Endpoint
+
+```
+POST /photos
+```
+
+---
+
+## HU-20 Asociar foto a rutita
+
+**Como administrador**
+quiero asociar fotos a rutitas
+para representar eventos concretos.
+
+---
+
+## HU-21 Asociar foto a etapa
+
+**Como administrador**
+quiero asociar fotos a una etapa
+para mostrar fotos generales del día.
+
+---
+
+# 🔐 ÉPICA 6 — Administración y seguridad
+
+---
+
+## HU-22 Autenticación de administrador
+
+**Como administrador**
+quiero autenticarme en el sistema
+para gestionar el contenido del viaje.
+
+---
+
+## HU-23 Acceso protegido a endpoints admin
+
+**Como sistema**
+quiero proteger endpoints de administración
+para evitar accesos no autorizados.
+
+---
+
+# ⚙️ ÉPICA 7 — Integración de pagos
+
+Integración con **Stripe**.
+
+---
+
+## HU-24 Crear sesión de pago
+
+**Como sistema**
+quiero crear una sesión de pago en Stripe
+para permitir donaciones.
+
+---
+
+## HU-25 Procesar webhook de pago
+
+**Como sistema**
+quiero recibir confirmación de pago desde Stripe
+para registrar la donación.
+
+Endpoint
+
+```
+POST /stripe/webhook
+```
+
+---
+
+## HU-26 Registrar donación
+
+**Como sistema**
+quiero guardar una donación confirmada
+para contabilizar financiación.
+
+---
+
+## HU-27 Registrar comentario del donante
+
+**Como sistema**
+quiero registrar el comentario asociado a una donación
+para mostrarlo en el feed.
+
+---
+
+# 📊 ÉPICA 8 — Cálculo de estadísticas
+
+---
+
+## HU-28 Calcular estadísticas globales
+
+**Como sistema**
+quiero calcular métricas globales del viaje
+para mostrarlas en el frontend.
+
+Datos calculados:
+
+* km totales
+* desnivel total
+* etapas
+* dinero recaudado
+* donaciones
+
+---
+
+## HU-29 Calcular km financiados
+
+**Como sistema**
+quiero convertir el dinero donado a km financiados
+para mostrar el progreso.
+
+---
+
+# 📦 Resultado total
+
+Tienes aproximadamente:
+
+**29 Historias de Usuario**
+
+Organizadas en **8 épicas**:
+
+1️⃣ Visualización del viaje
+2️⃣ Mapa interactivo
+3️⃣ Crowdfunding
+4️⃣ Gestión de etapas
+5️⃣ Gestión de fotos
+6️⃣ Seguridad
+7️⃣ Integración Stripe
+8️⃣ Estadísticas
+
+---
+
+💡 Si quieres, en el siguiente paso puedo hacer algo **muy útil para desarrollo**:
+
+* convertir estas HU en **tickets de desarrollo reales**
+* estimarlas
+* ordenarlas en **sprints**
+* decirte **qué construir primero para tener MVP en 1 semana**
+
+Y también puedo diseñarte **la arquitectura exacta de paquetes en Spring Boot para que el proyecto no se desordene cuando crezca**. 🚴‍♂️

@@ -1,0 +1,501 @@
+🔥 **Conpedales** suena muy bien. Corto, fácil de recordar y muy alineado con el proyecto. La idea tiene pinta de quedar brutal si el backend está bien pensado desde el principio. Vamos a estructurarlo **como si fuera el diseño técnico inicial del backend**.
+
+Stack confirmado:
+
+* Backend → Spring Boot
+* Build → Apache Maven
+* Pagos → Stripe
+* Imágenes → Cloudflare R2
+* Front → React / React Native (admin)
+
+---
+
+# 🧠 1. Dominio del sistema (lo más importante)
+
+Tu dominio real tiene **6 entidades principales**.
+
+```
+Stage (etapa)
+RouteSegment (rutita)
+Photo
+Donation
+Comment
+Stats (calculado)
+```
+
+Relaciones:
+
+```
+Stage
+ ├── RouteSegment (1:N)
+ ├── Photo (1:N)
+ └── coordenadas inicio/fin
+
+RouteSegment
+ └── Photo (1:N)
+
+Donation
+ └── Comment (1:1 opcional)
+```
+
+---
+
+# 🗄️ 2. Modelo de base de datos
+
+Te propongo algo **muy limpio y escalable**.
+
+## Stage (etapas)
+
+```
+stage
+------
+id
+day_number
+country
+
+start_name
+start_lat
+start_lng
+
+end_name
+end_lat
+end_lng
+
+km
+elevation_gain
+moving_time
+
+description
+
+created_at
+```
+
+Ejemplo:
+
+```
+Etapa 7
+Italia
+Florencia → Bolonia
+110km
+950m
+6h
+```
+
+---
+
+## RouteSegment (rutitas)
+
+```
+route_segment
+--------------
+id
+stage_id
+
+start_name
+end_name
+
+start_lat
+start_lng
+
+end_lat
+end_lng
+
+km
+elevation_gain
+
+created_at
+```
+
+---
+
+## RouteSegment events
+
+Como puede haber **varios eventos**, hacemos tabla aparte.
+
+```
+route_segment_event
+--------------------
+id
+route_segment_id
+type
+```
+
+type podría ser enum:
+
+```
+PUNCTURE
+MECHANICAL
+SOCIAL
+FOOD
+VIEWPOINT
+WEATHER
+OTHER
+```
+
+Esto permite meter **iconos en el mapa**.
+
+---
+
+## Photos
+
+Fotos pueden pertenecer a:
+
+* etapa
+* rutita
+* o solo etapa
+
+```
+photo
+------
+id
+
+stage_id
+route_segment_id (nullable)
+
+url
+caption
+
+taken_at
+created_at
+```
+
+---
+
+## Donations
+
+```
+donation
+---------
+id
+stripe_payment_intent
+amount
+
+donor_name (nullable)
+
+created_at
+```
+
+---
+
+## Comments
+
+Solo si dona.
+
+```
+comment
+-------
+id
+donation_id
+
+message
+created_at
+```
+
+---
+
+# 📊 3. Stats globales
+
+Esto **NO lo guardaría**.
+
+Se calcula:
+
+```
+SUM(stage.km)
+SUM(stage.elevation_gain)
+COUNT(stage)
+SUM(donation.amount)
+COUNT(donation)
+```
+
+Endpoint:
+
+```
+GET /stats
+```
+
+Response:
+
+```json
+{
+  "totalKm": 2345,
+  "totalElevation": 32100,
+  "totalStages": 27,
+  "totalDonations": 310,
+  "totalFunded": 2345
+}
+```
+
+💡 Así el frontend puede hacer:
+
+```
+2345€ = 2345km financiados
+```
+
+---
+
+# 🗺️ 4. Mapa épico
+
+Endpoint especial:
+
+```
+GET /map
+```
+
+Response:
+
+```json
+{
+  "stages": [],
+  "segments": [],
+  "photos": []
+}
+```
+
+Esto permite al front construir:
+
+* línea del recorrido
+* marcadores
+* fotos
+* eventos
+
+---
+
+# 💳 5. Flujo de donación
+
+Flujo con Stripe:
+
+```
+frontend
+   ↓
+POST /donations/checkout
+
+backend
+   ↓
+crear checkout session stripe
+   ↓
+redirigir usuario
+   ↓
+pago completado
+   ↓
+webhook stripe
+   ↓
+guardar donation
+   ↓
+guardar comment
+```
+
+Endpoints:
+
+### crear checkout
+
+```
+POST /donations/checkout
+```
+
+request
+
+```json
+{
+  "amount": 10,
+  "name": "Carlos",
+  "comment": "Mucho ánimo chavales!"
+}
+```
+
+---
+
+### webhook stripe
+
+```
+POST /stripe/webhook
+```
+
+Se verifica firma y se guarda.
+
+---
+
+### feed de comentarios
+
+```
+GET /donations/feed
+```
+
+response
+
+```json
+[
+  {
+    "name": "Carlos",
+    "amount": 10,
+    "comment": "Mucho ánimo chavales",
+    "date": "2026-05-03"
+  }
+]
+```
+
+---
+
+# 📸 6. Subida de fotos
+
+Con Cloudflare R2.
+
+Backend **no recibe la imagen**.
+
+Flujo moderno:
+
+```
+admin panel
+ ↓
+GET /upload-url
+ ↓
+backend genera presigned URL
+ ↓
+frontend sube directo a R2
+ ↓
+guarda URL en /photos
+```
+
+Endpoints:
+
+```
+POST /photos
+GET /photos/stage/{id}
+```
+
+---
+
+# 🔐 7. Admin
+
+Solo para vosotros.
+
+Auth simple:
+
+```
+JWT
+```
+
+Endpoints admin:
+
+```
+POST /admin/stages
+PUT /admin/stages/{id}
+DELETE /admin/stages/{id}
+
+POST /admin/segments
+POST /admin/photos
+```
+
+---
+
+# 📡 8. API final (resumen)
+
+## público
+
+```
+GET /stages
+GET /stages/{id}
+
+GET /segments/{stageId}
+
+GET /photos
+
+GET /stats
+GET /map
+
+GET /donations/feed
+POST /donations/checkout
+```
+
+---
+
+## admin
+
+```
+POST /admin/stages
+POST /admin/segments
+POST /admin/photos
+```
+
+---
+
+# 📂 9. Estructura Spring Boot
+
+Proyecto:
+
+```
+conpedales-api
+```
+
+estructura:
+
+```
+controller
+service
+repository
+model
+dto
+config
+stripe
+map
+```
+
+Ejemplo:
+
+```
+StageController
+StageService
+StageRepository
+StageEntity
+StageDTO
+```
+
+---
+
+# ⚡ 10. Cosas que recomiendo añadir
+
+Esto puede dar **muchísima vida al proyecto**.
+
+### 1️⃣ timeline del viaje
+
+```
+GET /timeline
+```
+
+respuesta:
+
+```
+día 1
+día 2
+día 3
+```
+
+---
+
+### 2️⃣ última etapa destacada
+
+```
+GET /stages/latest
+```
+
+---
+
+### 3️⃣ foto destacada del día
+
+```
+GET /photos/highlight
+```
+
+---
+
+# 🚀 Si quieres, en el siguiente paso te puedo montar:
+
+### 🧱
+
+* **schema SQL completo**
+* **entidades JPA**
+* **estructura Spring Boot lista**
+* **controladores REST**
+* **webhook Stripe implementado**
+
+y literalmente podrías **levantar el backend de Conpedales en una tarde**. 🚴‍♂️💻
+

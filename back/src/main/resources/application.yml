@@ -1,0 +1,49 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: conpedales-api
+  
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/conpedales}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  
+  sql:
+    init:
+      mode: never
+
+jwt:
+  secret: ${JWT_SECRET:secret-key}
+  expiration: ${JWT_EXPIRATION:86400000}
+
+stripe:
+  api:
+    key: ${STRIPE_SECRET_KEY:stripe-key}
+  webhook:
+    secret: ${STRIPE_WEBHOOK_SECRET:stripe-webhook-secret}
+
+cloudflare:
+  r2:
+    access-key-id: ${R2_ACCESS_KEY_ID:r2-access-key-id}
+    secret-access-key: ${R2_SECRET_ACCESS_KEY:r2-secret-access-key}
+    bucket-name: ${R2_BUCKET_NAME:r2-bucket-name}
+    endpoint: ${R2_ENDPOINT:r2-endpoint}
+    public-url: ${R2_PUBLIC_URL:r2-public-url}
+
+logging:
+  level:
+    root: INFO
+    com.conpedales: DEBUG
+    org.springframework.security: DEBUG
