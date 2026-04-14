@@ -1,0 +1,164 @@
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  min-height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.parallax-sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #E8F4F8 0%, #F8F9FA 40%, #FFF5F0 70%, #FFE8E0 100%);
+}
+
+.parallax-sun {
+  position: absolute;
+  top: 8%;
+  right: 12%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #FFD700 0%, #FFA500 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgba(255, 165, 0, 0.4);
+}
+
+.parallax-clouds {
+  position: absolute;
+  inset: 0;
+}
+
+.parallax-cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+  opacity: 0.7;
+}
+
+.parallax-cloud-1 {
+  width: 100px;
+  height: 35px;
+  top: 12%;
+  left: 5%;
+}
+
+.parallax-cloud-2 {
+  width: 70px;
+  height: 25px;
+  top: 20%;
+  left: 25%;
+}
+
+.parallax-cloud-3 {
+  width: 90px;
+  height: 30px;
+  top: 8%;
+  left: 55%;
+}
+
+.parallax-mountains {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50vh;
+}
+
+.parallax-mountain {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.parallax-mountain-1 {
+  left: -10%;
+  border-width: 0 250px 300px 250px;
+  border-color: transparent transparent #D4E5ED transparent;
+}
+
+.parallax-mountain-2 {
+  left: 15%;
+  border-width: 0 300px 380px 300px;
+  border-color: transparent transparent #B8D4E3 transparent;
+}
+
+.parallax-mountain-3 {
+  left: 45%;
+  border-width: 0 280px 350px 280px;
+  border-color: transparent transparent #A8C8DC transparent;
+}
+
+.parallax-mountain-4 {
+  right: -15%;
+  border-width: 0 320px 400px 320px;
+  border-color: transparent transparent #C5DAE3 transparent;
+}
+
+.parallax-mountain-5 {
+  right: 5%;
+  border-width: 0 180px 220px 180px;
+  border-color: transparent transparent #9EC1D2 transparent;
+}
+
+.parallax-road {
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(90deg, #DEE2E6 0%, #CED4DA 100%);
+}
+
+.parallax-road-line {
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #FF6B35 0px,
+    #FF6B35 30px,
+    transparent 30px,
+    transparent 60px
+  );
+}
+
+.parallax-bike {
+  position: absolute;
+  bottom: 12%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.parallax-bike svg {
+  width: 60px;
+  height: 60px;
+}
+
+.parallax-bike-label {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin-top: var(--spacing-xs);
+  white-space: nowrap;
+}
+
+.parallax-bike.pedal {
+  animation: pedal 0.3s ease-in-out infinite;
+}
+
+@keyframes pedal {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}

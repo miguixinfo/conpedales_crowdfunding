@@ -1,0 +1,239 @@
+.donar-page {
+  padding-top: var(--navbar-height);
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.donar-hero {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+  padding: var(--spacing-xxxl) 0;
+  text-align: center;
+  color: white;
+}
+
+.donar-hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: var(--spacing-md);
+}
+
+.donar-hero p {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.donar-content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--spacing-xxxl) var(--spacing-lg);
+}
+
+.donar-explanation {
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.donar-explanation h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+
+.donar-explanation p {
+  color: var(--color-text-light);
+  line-height: 1.7;
+}
+
+.donar-explanation .highlight {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.donar-form {
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+}
+
+.donar-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.donar-section:last-child {
+  margin-bottom: 0;
+}
+
+.donar-section h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-light);
+}
+
+.amount-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.amount-btn {
+  padding: var(--spacing-md);
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.amount-btn:hover {
+  border-color: var(--color-accent);
+}
+
+.amount-btn.selected {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+}
+
+.custom-amount {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.custom-amount span {
+  font-size: 1.25rem;
+  color: var(--color-text-light);
+}
+
+.custom-amount input {
+  flex: 1;
+  padding: var(--spacing-md);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 1.125rem;
+  font-weight: 600;
+  transition: border-color var(--transition-fast);
+}
+
+.custom-amount input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.km-indicator {
+  background: var(--color-accent-light);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  text-align: center;
+  margin-top: var(--spacing-md);
+}
+
+.km-indicator p {
+  font-size: 0.9375rem;
+  color: var(--color-text-light);
+}
+
+.km-indicator strong {
+  color: var(--color-accent);
+}
+
+.donar-input {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  transition: border-color var(--transition-fast);
+  margin-bottom: var(--spacing-md);
+}
+
+.donar-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.donar-textarea {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 100px;
+  transition: border-color var(--transition-fast);
+  margin-bottom: var(--spacing-md);
+}
+
+.donar-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.contact-section {
+  background: var(--color-bg);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+}
+
+.contact-section p {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-sm);
+}
+
+.donar-submit {
+  width: 100%;
+  margin-top: var(--spacing-xl);
+}
+
+.thank-you {
+  text-align: center;
+  padding: var(--spacing-xxxl) var(--spacing-lg);
+}
+
+.thank-you-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--color-success);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.thank-you-icon svg {
+  width: 40px;
+  height: 40px;
+  color: white;
+}
+
+.thank-you h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: var(--spacing-md);
+}
+
+.thank-you p {
+  color: var(--color-text-light);
+  font-size: 1.125rem;
+  margin-bottom: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+  .donar-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .amount-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

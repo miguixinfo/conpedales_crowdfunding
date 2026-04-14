@@ -1,0 +1,60 @@
+.donation-card {
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  display: flex;
+  gap: var(--spacing-md);
+  transition: all var(--transition-normal);
+}
+
+.donation-card:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateX(4px);
+}
+
+.donation-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.donation-info {
+  flex: 1;
+}
+
+.donation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+.donation-name {
+  font-weight: 600;
+}
+
+.donation-amount {
+  font-weight: 700;
+  color: var(--color-accent);
+  font-size: 1.125rem;
+}
+
+.donation-comment {
+  color: var(--color-text-light);
+  font-size: 0.9375rem;
+  font-style: italic;
+}
+
+.donation-date {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin-top: var(--spacing-xs);
+}

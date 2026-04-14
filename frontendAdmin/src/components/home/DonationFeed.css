@@ -1,0 +1,40 @@
+.donation-feed {
+  padding: var(--spacing-xxxl) 0;
+  background: var(--color-bg-alt);
+}
+
+.donation-feed .container {
+  max-width: var(--container-max);
+}
+
+.donation-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.donation-header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: var(--spacing-md);
+}
+
+.donation-header p {
+  color: var(--color-text-light);
+  font-size: 1.125rem;
+}
+
+.donation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .donation-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .donation-header h2 {
+    font-size: 1.75rem;
+  }
+}

@@ -1,0 +1,49 @@
+.donar-cancelar-page {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xxl) var(--spacing-md);
+}
+
+.cancelar-container {
+  text-align: center;
+  max-width: 600px;
+}
+
+.cancelar-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--spacing-lg);
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cancelar-icon svg {
+  width: 40px;
+  height: 40px;
+  color: white;
+}
+
+.cancelar-container h1 {
+  font-size: 2rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.cancelar-message {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-xl);
+}
+
+.cancelar-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}

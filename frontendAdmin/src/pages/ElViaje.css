@@ -1,0 +1,192 @@
+.elviaje-page {
+  padding-top: var(--navbar-height);
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.elviaje-hero {
+  background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
+  padding: var(--spacing-xxxl) 0;
+  text-align: center;
+}
+
+.elviaje-hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: var(--spacing-md);
+}
+
+.elviaje-hero .tagline {
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+}
+
+.elviaje-hero p {
+  color: var(--color-text-light);
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.elviaje-content {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--spacing-xxxl) var(--spacing-lg);
+}
+
+.story-section {
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xxl);
+  margin-bottom: var(--spacing-xxl);
+  box-shadow: var(--shadow-sm);
+}
+
+.story-section h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text);
+}
+
+.story-section p {
+  color: var(--color-text-light);
+  line-height: 1.8;
+  font-size: 1.0625rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.story-section p:last-child {
+  margin-bottom: 0;
+}
+
+.story-highlight {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+.story-stat {
+  text-align: center;
+  padding: var(--spacing-lg);
+  background: var(--color-accent-light);
+  border-radius: var(--radius-lg);
+}
+
+.story-stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-accent);
+}
+
+.story-stat-label {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+.previous-trips {
+  margin-top: var(--spacing-xxl);
+}
+
+.previous-trips h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: var(--spacing-lg);
+}
+
+.previous-trips-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.trip-card {
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.trip-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.trip-image {
+  height: 200px;
+  background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-border) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  overflow: hidden;
+}
+
+.trip-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trip-content {
+  padding: var(--spacing-lg);
+}
+
+.trip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.trip-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.trip-year {
+  background: var(--color-accent);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.trip-distance {
+  color: var(--color-text-light);
+  font-size: 0.9375rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.trip-description {
+  color: var(--color-text-light);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .elviaje-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .elviaje-hero .tagline {
+    font-size: 1.125rem;
+  }
+  
+  .story-section {
+    padding: var(--spacing-lg);
+  }
+  
+  .story-highlight {
+    grid-template-columns: 1fr;
+  }
+  
+  .previous-trips-grid {
+    grid-template-columns: 1fr;
+  }
+}

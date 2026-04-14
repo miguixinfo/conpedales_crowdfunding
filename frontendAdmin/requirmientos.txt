@@ -1,0 +1,558 @@
+CONPEDALES  
+ESPECIFICACIÓN FUNCIONAL – WEB PÚBLICA  
+Viaje en bicicleta Toledo → Grecia  
+Crowdfunding + Diario del viaje
+
+--------------------------------------------------
+
+1. VISIÓN DEL PROYECTO
+
+ConPedales es una plataforma web creada para financiar y documentar un viaje en bicicleta desde Toledo hasta Grecia.
+
+El objetivo de la web es:
+
+- Contar la historia del viaje
+- Compartir el progreso día a día
+- Permitir que la gente apoye el proyecto mediante donaciones
+- Crear una comunidad alrededor del viaje
+
+La web combina tres conceptos:
+
+1) Storytelling del viaje  
+2) Crowdfunding  
+3) Seguimiento deportivo tipo Strava
+
+La experiencia debe sentirse:
+
+- deportiva
+- minimalista
+- inspiradora
+- dinámica
+
+Inspiración visual:
+
+- diseño deportivo
+- bloques visuales grandes
+- métricas destacadas
+- fotografías grandes
+- tipografía fuerte
+
+--------------------------------------------------
+
+2. IDENTIDAD DEL PROYECTO
+
+Nombre del proyecto:
+
+ConPedales
+
+Tagline principal:
+
+"De Toledo a Grecia. Solo con nuestras piernas."
+
+Taglines secundarios:
+
+"Cada pedalada cuenta."  
+"Ayúdanos a llegar al Egeo."  
+"1€ nos acerca un kilómetro más."
+
+Concepto central de crowdfunding:
+
+1€ ≈ 1km
+
+Referencia visual:
+
+100 km ≈ 80€
+
+--------------------------------------------------
+
+3. ESTILO VISUAL (UX / UI)
+
+Estética general:
+
+Estilo deportivo moderno inspirado en apps deportivas.
+
+Paleta:
+
+Fondo claro / gris muy claro  
+Texto negro  
+Acentos en color deportivo (naranja o azul eléctrico)
+
+Características visuales:
+
+- mucho espacio en blanco
+- tarjetas grandes
+- tipografía fuerte
+- números grandes
+- animaciones suaves
+
+Elementos visuales principales:
+
+- fotos grandes del viaje
+- métricas deportivas
+- timeline del viaje
+- mapa del progreso
+
+--------------------------------------------------
+
+4. ESTRUCTURA DE NAVEGACIÓN
+
+La web tendrá las siguientes secciones principales.
+
+HOME  
+EL VIAJE  
+DIARIO  
+MAPA  
+COMUNIDAD  
+DONAR  
+
+Footer:
+
+Nuestra historia  
+Viajes anteriores  
+Instagram  
+TikTok  
+
+--------------------------------------------------
+
+5. HOME (LANDING PAGE)
+
+Objetivo:
+
+- impactar
+- contar rápidamente el proyecto
+- incentivar donaciones
+
+Secciones de la Home:
+
+1 HERO
+2 MÉTRICAS DEL VIAJE
+3 PROGRESO DE KM FINANCIADOS
+4 MAPA DEL VIAJE
+5 ÚLTIMAS ETAPAS
+6 FEED DE DONACIONES
+7 CALL TO ACTION DONAR
+8 FOOTER
+
+--------------------------------------------------
+
+6. HERO
+
+Pantalla inicial.
+
+Contenido:
+
+Foto grande del viaje.
+
+Texto principal:
+
+CONPEDALES
+
+Subtítulo:
+
+De Toledo a Grecia en bicicleta.
+
+Texto:
+
+Miles de kilómetros.  
+Cientos de pedaladas.  
+Una aventura que queremos compartir contigo.
+
+Botones:
+
+Ver el viaje  
+Donar
+
+--------------------------------------------------
+
+7. MÉTRICAS DEL VIAJE
+
+Bloque tipo Strava.
+
+Tarjetas grandes con números.
+
+Ejemplo:
+
+KM TOTALES DEL VIAJE  
+3.400 km
+
+KM RECORRIDOS  
+420 km
+
+DÍAS DE VIAJE  
+6
+
+PAÍSES  
+2
+
+DESNIVEL ACUMULADO  
+3.200 m
+
+DONACIONES  
+132
+
+Estas métricas se actualizan desde el panel admin.
+
+--------------------------------------------------
+
+8. PROGRESO DE KM FINANCIADOS
+
+Elemento central del crowdfunding.
+
+Texto:
+
+La comunidad ya ha financiado:
+
+2.430 km del viaje
+
+Visualización:
+
+Barra de progreso o contador grande.
+
+Subtexto:
+
+100 km ≈ 80€
+
+CTA:
+
+Ayúdanos a pedalear más lejos.
+
+Botón:
+
+Donar ahora
+
+--------------------------------------------------
+
+9. MAPA DEL VIAJE
+
+Mapa embebido.
+
+Ruta:
+
+Toledo → Grecia
+
+El mapa muestra:
+
+- ruta general
+- punto actual
+- etapas anteriores
+
+Debajo del mapa:
+
+Texto:
+
+Seguimos pedaleando hacia Grecia.
+
+Cada día añadimos nuevas etapas.
+
+Botón:
+
+Ver mapa completo
+
+--------------------------------------------------
+
+10. ÚLTIMAS ETAPAS DEL VIAJE
+
+Timeline tipo actividad deportiva.
+
+Cada tarjeta incluye:
+
+foto  
+título  
+km del día  
+desnivel  
+fecha  
+resumen
+
+Ejemplo:
+
+ETAPA 6  
+Talavera → Navalmoral
+
+92 km  
+1.200 m desnivel
+
+Hoy ha sido una etapa durísima, con viento de cara casi todo el día.
+
+Botón:
+
+Leer etapa
+
+--------------------------------------------------
+
+11. FEED DE DONACIONES (COMUNIDAD)
+
+Timeline en tiempo real.
+
+Formato:
+
+Nombre – cantidad
+
+Comentario
+
+Ejemplo:
+
+Carlos donó 15€
+
+"Mucho ánimo chavales. Grecia os espera."
+
+Laura donó 5€
+
+"Vamos!"
+
+Orden:
+
+cronológico
+
+--------------------------------------------------
+
+12. CTA DONAR
+
+Sección final antes del footer.
+
+Título:
+
+Impulsa la próxima pedalada.
+
+Texto:
+
+Cada euro nos acerca un poco más a Grecia.
+
+Botón grande:
+
+DONAR
+
+--------------------------------------------------
+
+13. PÁGINA DONAR
+
+Objetivo:
+
+realizar la donación.
+
+Secciones:
+
+explicación  
+selección de importe  
+formulario  
+pago
+
+--------------------------------------------------
+
+14. EXPLICACIÓN DONACIÓN
+
+Texto:
+
+Si quieres ayudarnos a llegar a Grecia puedes aportar cualquier cantidad.
+
+Cada euro cuenta.
+
+Las donaciones superiores a 10€ recibirán un pequeño regalo del viaje.
+
+--------------------------------------------------
+
+15. SELECCIÓN DE IMPORTE
+
+Botones rápidos:
+
+5€  
+10€  
+20€  
+50€  
+100€  
+
+Campo:
+
+importe personalizado
+
+Indicador visual:
+
+Esto financia aproximadamente:
+
+X kilómetros
+
+--------------------------------------------------
+
+16. FORMULARIO DONACIÓN
+
+Campos:
+
+Nombre (obligatorio)
+
+Comentario (opcional)
+
+Contacto (solo si >10€)
+
+Texto del contacto:
+
+Si tu donación supera los 10€, déjanos un contacto para enviarte un regalo del viaje.
+
+--------------------------------------------------
+
+17. PAGO
+
+Botón:
+
+Continuar al pago
+
+Se redirige al sistema de pago seguro.
+
+Tras el pago:
+
+pantalla de agradecimiento.
+
+--------------------------------------------------
+
+18. PÁGINA DIARIO
+
+Sección donde se documenta el viaje.
+
+Formato:
+
+timeline diaria.
+
+Cada entrada representa:
+
+una etapa o día.
+
+Contenido de cada entrada:
+
+título  
+fecha  
+texto  
+galería  
+video  
+estadísticas de etapa
+
+Ejemplo:
+
+ETAPA 7  
+Navalmoral → Plasencia
+
+Distancia  
+88 km
+
+Desnivel  
+900 m
+
+Tiempo  
+5h
+
+--------------------------------------------------
+
+19. PÁGINA MAPA
+
+Mapa grande.
+
+Muestra:
+
+ruta completa
+
+chinchetas con etapas
+
+Cada chincheta abre:
+
+mini resumen del día.
+
+--------------------------------------------------
+
+20. PÁGINA EL VIAJE
+
+Historia del proyecto.
+
+Contenido:
+
+quiénes somos  
+por qué hacemos el viaje  
+cómo surgió la idea
+
+--------------------------------------------------
+
+21. PÁGINA VIAJES ANTERIORES
+
+Sección con aventuras anteriores.
+
+Toledo → Santiago
+
+Toledo → Aquasella
+
+Cada uno con:
+
+descripción  
+fotos  
+videos
+
+--------------------------------------------------
+
+22. COMPONENTES PRINCIPALES
+
+Componentes reutilizables:
+
+Botón primario  
+Tarjeta de etapa  
+Tarjeta de noticia  
+Tarjeta de donación  
+Contador de métricas  
+Barra de progreso  
+Mapa embebido  
+Galería de imágenes  
+Timeline
+
+--------------------------------------------------
+
+23. ESTADOS DE INTERFAZ
+
+Loading:
+
+animación simple.
+
+Error:
+
+mensaje claro.
+
+Pago correcto:
+
+mensaje de agradecimiento.
+
+--------------------------------------------------
+
+24. EXPERIENCIA MÓVIL
+
+La web debe estar optimizada para móvil.
+
+Muchos usuarios llegarán desde redes sociales.
+
+Prioridades en móvil:
+
+donar fácilmente  
+ver el progreso  
+leer etapas
+
+--------------------------------------------------
+
+25. TONO DE COMUNICACIÓN
+
+Cercano  
+deportivo  
+motivador
+
+Ejemplos de frases:
+
+"Cada pedalada cuenta."  
+"La aventura continúa."  
+"Gracias por empujarnos hacia Grecia."
+
+--------------------------------------------------
+
+26. OBJETIVO DE LA WEB
+
+La web debe conseguir:
+
+1) contar la aventura  
+2) generar comunidad  
+3) financiar el viaje  
+
+Todo con una experiencia simple, rápida y visual.
+
+--------------------------------------------------
+
+FIN DEL DOCUMENTO

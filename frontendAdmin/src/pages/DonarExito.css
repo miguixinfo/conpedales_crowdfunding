@@ -1,0 +1,73 @@
+.donar-exito-page {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xxl) var(--spacing-md);
+}
+
+.exito-container {
+  text-align: center;
+  max-width: 600px;
+}
+
+.exito-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--spacing-lg);
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-600));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exito-icon svg {
+  width: 40px;
+  height: 40px;
+  color: white;
+}
+
+.exito-container h1 {
+  font-size: 2rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.exito-message {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-xl);
+}
+
+.exito-stats {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.exito-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.exito-stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary-500);
+}
+
+.exito-stat-label {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.exito-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
